@@ -1,3 +1,8 @@
+Criar uma aplicação simples "olá mundo" em NodeJS pronta para rodar no Microsoft Azure, gere os arquivos necessários: app.js, package.json e use o pacote http para as rotas.
+
+git config --global user.name "Seu nome"
+git config --global user.email "Seu email"
+
 # Olá Mundo - Node.js para Microsoft Azure
 
 Uma aplicação simples "Olá Mundo" em Node.js, pronta para ser executada no Microsoft Azure.
