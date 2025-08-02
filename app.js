@@ -5,17 +5,16 @@ const port = process.env.PORT || 3000;
 
 // Criar o servidor HTTP
 const server = http.createServer((req, res) => {
-  // Configurar headers de resposta
-  // res.writeHead(200, {
-  //   "Content-Type": "text/html; charset=utf-8",
-  //   "Access-Control-Allow-Origin": "*",
-  // });
-
   // Roteamento simples
   const url = req.url;
   const method = req.method;
 
   if (url === "/" && method === "GET") {
+    // Configurar headers de resposta
+    res.writeHead(200, {
+      "Content-Type": "text/html; charset=utf-8",
+      "Access-Control-Allow-Origin": "*",
+    });
     // Página principal - Olá Mundo
     const html = `
     <!DOCTYPE html>
@@ -89,6 +88,7 @@ const server = http.createServer((req, res) => {
                 <a href="/api">API Info</a>
                 <a href="/status">Status</a>
                 <a href="/sobre">Sobre</a>
+                <a href="/galeria">🖼️ Galeria</a>
             </div>
         </div>
     </body>
@@ -97,6 +97,7 @@ const server = http.createServer((req, res) => {
     res.end(html);
   } else if (url === "/api" && method === "GET") {
     // Endpoint da API com informações JSON
+    res.writeHead(200, { "Content-Type": "application/json; charset=utf-8", "Access-Control-Allow-Origin": "*" });
     const apiResponse = {
       message: "Olá Mundo API!",
       timestamp: new Date().toISOString(),
@@ -113,6 +114,11 @@ const server = http.createServer((req, res) => {
           method: "GET",
           description: "Informações sobre a aplicação",
         },
+        {
+          path: "/galeria",
+          method: "GET",
+          description: "Galeria de imagens com 5 links",
+        },
       ],
     };
 
@@ -120,6 +126,7 @@ const server = http.createServer((req, res) => {
     res.end(JSON.stringify(apiResponse, null, 2));
   } else if (url === "/status" && method === "GET") {
     // Endpoint de status do servidor
+    res.writeHead(200, { "Content-Type": "application/json; charset=utf-8", "Access-Control-Allow-Origin": "*" });
     const uptime = process.uptime();
     const statusResponse = {
       status: "online",
@@ -136,6 +143,7 @@ const server = http.createServer((req, res) => {
     res.end(JSON.stringify(statusResponse, null, 2));
   } else if (url === "/sobre" && method === "GET") {
     // Página sobre a aplicação
+    res.writeHead(200, { "Content-Type": "text/html; charset=utf-8", "Access-Control-Allow-Origin": "*" });
     const html = `
     <!DOCTYPE html>
     <html lang="pt-br">
@@ -209,6 +217,24 @@ const server = http.createServer((req, res) => {
     </html>
     `;
     res.end(html);
+  } else if (url === "/galeria" && method === "GET") {
+    // Página da galeria de imagens
+    const fs = require('fs');
+    const path = require('path');
+    
+    try {
+      const galeriaPath = path.join(__dirname, 'galeria.html');
+      const galeriaContent = fs.readFileSync(galeriaPath, 'utf8');
+      res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+      res.end(galeriaContent);
+    } catch (error) {
+      res.writeHead(500, { 'Content-Type': 'text/html; charset=utf-8' });
+      res.end(`
+        <h1>Erro 500</h1>
+        <p>Erro ao carregar a galeria: ${error.message}</p>
+        <a href="/">Voltar</a>
+      `);
+    }
   } else {
     // Página 404 - Não encontrado
     const html = `

@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Galeria de Imagens - Azure Gallery</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 2rem;
+        color: #333;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 2rem;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        text-align: center;
+        color: #333;
+        margin-bottom: 2rem;
+        font-size: 2.5rem;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      .subtitle {
+        text-align: center;
+        color: #666;
+        margin-bottom: 3rem;
+        font-size: 1.2rem;
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-bottom: 3rem;
+      }
+
+      .image-card {
+        background: white;
+        border-radius: 15px;
+        padding: 1.5rem;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        text-align: center;
+      }
+
+      .image-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+      }
+
+      .image-link {
+        display: block;
+        text-decoration: none;
+        color: inherit;
+      }
+
+      .image-container {
+        width: 100%;
+        height: 200px;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 1rem;
+        background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+      }
+
+      .image-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+        border-radius: 10px;
+      }
+
+      .image-container:hover img {
+        transform: scale(1.05);
+      }
+
+      .image-placeholder {
+        font-size: 3rem;
+        color: #999;
+      }
+
+      .image-title {
+        font-size: 1.4rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        color: #333;
+      }
+
+      .image-description {
+        color: #666;
+        font-size: 0.95rem;
+        line-height: 1.4;
+        margin-bottom: 1rem;
+      }
+
+      .image-url {
+        background: #f8f9fa;
+        padding: 0.5rem;
+        border-radius: 5px;
+        font-family: "Courier New", monospace;
+        font-size: 0.85rem;
+        color: #495057;
+        word-break: break-all;
+        border-left: 4px solid #007bff;
+      }
+
+      .back-button {
+        display: inline-block;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .back-button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      }
+
+      .footer {
+        text-align: center;
+        margin-top: 3rem;
+        padding-top: 2rem;
+        border-top: 1px solid #eee;
+      }
+
+      .note {
+        background: #fff3cd;
+        border: 1px solid #ffeaa7;
+        border-radius: 10px;
+        padding: 1rem;
+        margin-bottom: 2rem;
+        color: #856404;
+      }
+
+      @media (max-width: 768px) {
+        .gallery {
+          grid-template-columns: 1fr;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        .container {
+          padding: 1rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🖼️ Galeria de Imagens</h1>
+      <p class="subtitle">
+        Coleção de 5 imagens em alta qualidade - Demonstração para Azure
+      </p>
+
+      <div class="note">
+        <strong>📌 Nota:</strong> Esta galeria contém 5 tags &lt;img&gt; com
+        imagens do Unsplash. Clique nos cards para visualizar as imagens em
+        tamanho completo.
+      </div>
+
+      <!-- Imagem 1: -->
+      <div class="gallery">
+        <div class="image-card">
+          <a
+            href="https://fabioarquivos.blob.core.windows.net/imagens/1.png"
+            class="image-link"
+            target="_blank"
+            title="Ver imagem completa"
+          >
+            <div class="image-container">
+              <img
+                src="https://fabioarquivos.blob.core.windows.net/imagens/1.png"
+                alt="Paisagem Montanhosa"
+                style="width: 100%; height: 100%; object-fit: cover"
+              />
+            </div>
+            <div class="image-title">Paisagem Montanhosa</div>
+            <div class="image-description">
+              Uma bela vista panorâmica de montanhas cobertas de neve ao pôr do
+              sol, com reflexos dourados nas nuvens.
+            </div>
+            <div class="image-url">
+              https://images.unsplash.com/photo-1506905925346-21bda4d32df4
+            </div>
+          </a>
+        </div>
+
+        <!-- Imagem 2: -->
+        <div class="image-card">
+          <a
+            href="https://fabioarquivos.blob.core.windows.net/imagens/2.png"
+            class="image-link"
+            target="_blank"
+            title="Ver imagem completa"
+          >
+            <div class="image-container">
+              <img
+                src="https://fabioarquivos.blob.core.windows.net/imagens/2.png"
+                alt="Oceano Cristalino"
+                style="width: 100%; height: 100%; object-fit: cover"
+              />
+            </div>
+            <div class="image-title">Oceano Cristalino</div>
+            <div class="image-description">
+              Águas azul-turquesa cristalinas com ondas suaves quebrando em uma
+              praia tropical paradisíaca.
+            </div>
+            <div class="image-url">
+              https://images.unsplash.com/photo-1505142468610-359e7d316be0
+            </div>
+          </a>
+        </div>
+
+        <!-- Imagem 3: -->
+        <div class="image-card">
+          <a
+            href="https://fabioarquivos.blob.core.windows.net/imagens/3.png"
+            class="image-link"
+            target="_blank"
+            title="Ver imagem completa"
+          >
+            <div class="image-container">
+              <img
+                src="https://fabioarquivos.blob.core.windows.net/imagens/3.png"
+                alt="Skyline da Cidade"
+                style="width: 100%; height: 100%; object-fit: cover"
+              />
+            </div>
+            <div class="image-title">Skyline da Cidade</div>
+            <div class="image-description">
+              Vista panorâmica noturna de uma metrópole moderna com arranha-céus
+              iluminados e luzes vibrantes.
+            </div>
+            <div class="image-url">
+              https://images.unsplash.com/photo-1449824913935-59a10b8d2000
+            </div>
+          </a>
+        </div>
+
+        <!-- Imagem 4: -->
+        <div class="image-card">
+          <a
+            href="https://fabioarquivos.blob.core.windows.net/imagens/4.png"
+            class="image-link"
+            target="_blank"
+            title="Ver imagem completa"
+          >
+            <div class="image-container">
+              <img
+                src="https://fabioarquivos.blob.core.windows.net/imagens/4.png"
+                alt="Floresta Encantada"
+                style="width: 100%; height: 100%; object-fit: cover"
+              />
+            </div>
+            <div class="image-title">Floresta Encantada</div>
+            <div class="image-description">
+              Caminho serpenteante através de uma floresta densa com raios de
+              sol filtrando entre as árvores altas.
+            </div>
+            <div class="image-url">
+              https://images.unsplash.com/photo-1441974231531-c6227db76b6e
+            </div>
+          </a>
+        </div>
+
+        <!-- Imagem 5: -->
+        <div class="image-card">
+          <a
+            href="https://fabioarquivos.blob.core.windows.net/imagens/5.png"
+            class="image-link"
+            target="_blank"
+            title="Ver imagem completa"
+          >
+            <div class="image-container">
+              <img
+                src="https://fabioarquivos.blob.core.windows.net/imagens/5.png"
+                alt="Galáxia Espiral"
+                style="width: 100%; height: 100%; object-fit: cover"
+              />
+            </div>
+            <div class="image-title">Galáxia Espiral</div>
+            <div class="image-description">
+              Vista fascinante do cosmos com nebulosas coloridas, estrelas
+              brilhantes e a majestosa Via Láctea.
+            </div>
+            <div class="image-url">
+              https://images.unsplash.com/photo-1446776877081-d282a0f896e2
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="footer">
+        <a href="/" class="back-button">← Voltar para a Aplicação Principal</a>
+
+        <div style="margin-top: 2rem; color: #666; font-size: 0.9rem">
+          <p>
+            <strong>Tecnologias utilizadas:</strong> HTML5, CSS3, Grid Layout,
+            Flexbox
+          </p>
+          <p><strong>Imagens:</strong> Unsplash (https://unsplash.com)</p>
+          <p><strong>Design:</strong> Responsivo e otimizado para Azure</p>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Adicionar interatividade aos cards
+      document.addEventListener("DOMContentLoaded", function () {
+        const cards = document.querySelectorAll(".image-card");
+
+        cards.forEach((card) => {
+          card.addEventListener("mouseenter", function () {
+            this.style.transform = "translateY(-10px) scale(1.02)";
+          });
+
+          card.addEventListener("mouseleave", function () {
+            this.style.transform = "translateY(0) scale(1)";
+          });
+        });
+
+        // Feedback visual ao clicar
+        const links = document.querySelectorAll(".image-link");
+        links.forEach((link) => {
+          link.addEventListener("click", function () {
+            console.log("Abrindo imagem:", this.href);
+            // Aqui você poderia adicionar analytics ou tracking
+          });
+        });
+      });
+
+      // Função para verificar se as imagens estão carregando
+      function checkImageLinks() {
+        const images = document.querySelectorAll("img");
+        const links = document.querySelectorAll(".image-link");
+        console.log(
+          `📊 Total de ${images.length} tags <img> criadas e ${links.length} links:`
+        );
+
+        images.forEach((img, index) => {
+          console.log(`${index + 1}. Imagem: ${img.src} - Alt: ${img.alt}`);
+        });
+
+        links.forEach((link, index) => {
+          console.log(`${index + 1}. Link: ${link.href}`);
+        });
+      }
+
+      // Executar verificação quando a página carregar
+      window.addEventListener("load", checkImageLinks);
+    </script>
+  </body>
+</html>
