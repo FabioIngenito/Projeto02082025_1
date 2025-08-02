@@ -264,8 +264,8 @@ const server = http.createServer((req, res) => {
     </body>
     </html>
     `;
-    res.writeHead(404, { "Content-Type": "text/html; charset=utf-8" });
-    res.end(html);
+    //res.writeHead(404, { "Content-Type": "text/html; charset=utf-8" });
+    //res.end(html);
   }
 });
 
