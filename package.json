@@ -1,0 +1,23 @@
+{
+  "name": "ola-mundo-azure",
+  "version": "1.0.0",
+  "description": "Aplicação simples Olá Mundo para Microsoft Azure",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "node app.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "keywords": [
+    "nodejs",
+    "azure",
+    "hello-world"
+  ],
+  "author": "Fabio Ingenito",
+  "license": "MIT",
+  "dependencies": {
+    "http": "^0.0.1-security"
+  }
+}
