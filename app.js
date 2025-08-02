@@ -1,15 +1,15 @@
 const http = require("http");
 
 // Configuração da porta - Azure define a porta através da variável de ambiente PORT
-const port = process.env.PORT || 3003;
+const port = process.env.PORT || 3000;
 
 // Criar o servidor HTTP
 const server = http.createServer((req, res) => {
   // Configurar headers de resposta
-  res.writeHead(200, {
-    "Content-Type": "text/html; charset=utf-8",
-    "Access-Control-Allow-Origin": "*",
-  });
+  // res.writeHead(200, {
+  //   "Content-Type": "text/html; charset=utf-8",
+  //   "Access-Control-Allow-Origin": "*",
+  // });
 
   // Roteamento simples
   const url = req.url;
@@ -116,7 +116,7 @@ const server = http.createServer((req, res) => {
       ],
     };
 
-    res.writeHead(200, { "Content-Type": "application/json; charset=utf-8" });
+    // res.writeHead(200, { "Content-Type": "application/json; charset=utf-8" });
     res.end(JSON.stringify(apiResponse, null, 2));
   } else if (url === "/status" && method === "GET") {
     // Endpoint de status do servidor
@@ -132,7 +132,7 @@ const server = http.createServer((req, res) => {
       platform: process.platform,
     };
 
-    res.writeHead(200, { "Content-Type": "application/json; charset=utf-8" });
+    // res.writeHead(200, { "Content-Type": "application/json; charset=utf-8" });
     res.end(JSON.stringify(statusResponse, null, 2));
   } else if (url === "/sobre" && method === "GET") {
     // Página sobre a aplicação
