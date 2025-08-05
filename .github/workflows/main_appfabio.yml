@@ -11,7 +11,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     permissions:
       contents: read #This is required for actions/checkout
 
@@ -28,7 +28,7 @@ jobs:
           npm install
           npm run build --if-present
           npm run test --if-present
-
+      
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
@@ -51,13 +51,13 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_8D361A8259ED4AD4B4AA3D089AA20381 }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_7E2CEC263EF7498889BB0C17FD2A9151 }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_EEFF225CB9D74681AE079707E9C83DEF }}
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_843799CB7AF44C6DA8B7535465760C35 }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_0AB81898098147F98FC8508B053680D9 }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_702143AB27B8432E9214E07DBF5AD097 }}
 
       - name: 'Deploy to Azure Web App'
-        id: deploy-to-webapp
         uses: azure/webapps-deploy@v3
+        id: deploy-to-webapp
         with:
           app-name: 'appfabio'
           slot-name: 'Production'
